@@ -6,7 +6,7 @@ const app = express();
 const URI = process.env.MONGODB_URI
 const port = 4000
 
-mongoose.connect(URI)
+mongoose.connect(URI) 
 const database = mongoose.connection;
 
 database.on('err', (err)=> {
@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
   res.sendFile(filePath);
 }); 
 
-app.post('/', (req, res) => {
+app.post('/', (req, res) => { 
 
 })   
 
@@ -35,11 +35,15 @@ app.get('/blog', (req, res) => {
 app.get('/open-source', (req, res) => {
   const filePath = path.join(__dirname, '../client/pages/open-source.html');
   res.sendFile(filePath);
-}) 
+});
+
+app.get('/project', (req, res) => {
+  const filepath = path.join(__dirname, '../client/pages/project.html');
+  res.sendFile(filepath);  
+})
  
 app.listen(port, (req, res) => {  
     console.log(`Server is listening on port ${port}`);
 });
 
 
-// hashnode api => d159f53d-4dec-4993-b167-b8b80f8db555
